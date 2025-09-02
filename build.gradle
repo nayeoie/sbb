@@ -32,8 +32,12 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    implementation 'com.zaxxer:HikariCP:5.1.0'
-
+    // jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // SQLite JDBC 드라이버
+    runtimeOnly 'org.xerial:sqlite-jdbc:3.46.0.0'
+    // Hibernate 6 community dialects (SQLite 포함)
+    implementation 'org.hibernate.orm:hibernate-community-dialects:6.4.1.Final'
 }
 
 tasks.named('test') {
