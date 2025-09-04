@@ -26,20 +26,27 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    // jpa
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+    testCompileOnly 'org.projectlombok:lombok:1.18.38'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
+
+    // JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    // SQLite JDBC 드라이버
-    runtimeOnly 'org.xerial:sqlite-jdbc:3.46.0.0'
-    // Hibernate 6 community dialects (SQLite 포함)
-    implementation 'org.hibernate.orm:hibernate-community-dialects:6.4.1.Final'
-}
 
+    // SQLite
+    runtimeOnly 'org.xerial:sqlite-jdbc:3.46.0.0'
+    testRuntimeOnly 'org.xerial:sqlite-jdbc:3.46.0.0'   // ★ 추가
+
+    implementation 'org.hibernate.orm:hibernate-community-dialects:6.4.1.Final'
+
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
 tasks.named('test') {
     useJUnitPlatform()
 }
